@@ -15,7 +15,7 @@ export class CartComponent implements OnInit {
     name: '',
     address: ''
   });
-  
+
   constructor(
     private cartService: CartService,
     private formBuilder: FormBuilder,
@@ -24,4 +24,11 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit(): void {
+    // Process checkout data here
+    this.items = this.cartService.clearCart();
+    console.warn('Your order has been submitted', this.checkoutForm.value);
+    this.checkoutForm.reset();
+  }
+  
 }
